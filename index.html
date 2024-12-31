@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Paper Similarity Search</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/ort.min.js"></script>
+</head>
+<body>
+    <h1>AI Paper Similarity Search</h1>
+    <div id="instructions">
+        <h2>How to Use the AI Paper Similarity Search</h2>
+        <ul>
+            <li>Enter a query (e.g., "computer vision") in the search box.</li>
+            <li>Select the number of paper embeddings to load from the dropdown menu.</li>
+            <li>Click the "Find Similar Papers" button to search for papers that match your query.</li>
+            <li>The most similar papers will be displayed and ranked with the title, similarity score, and a link to the paper on arXiv.</li>
+            <li>You can click "Read More" to expand the abstract of each paper.</li>
+        </ul>
+        <p>This is a <strong>client-side application</strong> powered by <a href="https://github.com/onnx/onnxruntime" target="_blank">ONNX Runtime</a>, <a href="https://github.com/huggingface/transformers.js" target="_blank">Transformers.js</a>, and <a href="https://www.kaggle.com/datasets/Cornell-University/arxiv" target="_blank">arXiv dataset</a>.</p>
+    </div>
+    <div class="dropdown-container">
+        <label for="embeddingSelect">Select Embeddings:</label>
+        <select id="embeddingSelect">
+            <option value="10k_papers_embeddings.json" selected>10K Papers (Default)</option>
+            <option value="25k_papers_embeddings.json">25K Papers (Medium)</option>
+            <option value="50k_papers_embeddings.json">50K Papers (Large)</option>
+        </select>
+        <label for="resultCountSelect">Number of Results:</label>
+        <select id="resultCountSelect">
+            <option value="5" selected>Top 5</option>
+            <option value="10">Top 10</option>
+            <option value="25">Top 25</option>
+            <option value="50">Top 50</option>
+        </select>
+    </div>
+    <div class="input-container">
+        <input type="text" id="textInput" placeholder="Enter a query to find similar papers" />
+        <button id="tokenizeButton">Find Similar Papers</button>
+    </div>
+    <div id="notice">
+        <strong>Note:</strong> Only a subset of the dataset is loaded due to the size of the embeddings (20+ GB). To access the entire collection of 2.6 million paper embeddings, please visit the <a href="https://github.com/napronald/AI-Paper-Similarity-Search-App" target="_blank">GitHub repository</a> and run the model on a server.
+    </div>
+    <div class="results-container" id="results"></div>
+    <div class="footer">Powered by Transformers.js and ONNX Runtime</div>
+    <div id="loadingOverlay">
+        <div class="loadingBox">
+            <div class="loadingText">Loading embeddings, please wait...</div>
+            <div class="progressBarContainer">
+                <div id="progressBar"></div>
+            </div>
+            <div id="progressPercentage" class="progressPercentage">0%</div>
+            <div id="estimatedTime" class="estimatedTime">Estimated Time: Calculating...</div>
+        </div>
+    </div>
+    <script src="scripts/main.js" type="module"></script>
+</body>
+</html>

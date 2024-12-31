@@ -1,0 +1,236 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  line-height: 1.6;
+  color: #333;
+}
+
+h1 {
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#textInput {
+  width: 60%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#tokenizeButton {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#tokenizeButton:hover {
+  background-color: #0056b3;
+}
+
+#output {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-height: 400px;
+  overflow-y: auto;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.results-container {
+  margin-top: 20px;
+}
+
+.similar-paper {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f1f8ff;
+  border: 1px solid #d0e7ff;
+  border-radius: 4px;
+}
+
+.similar-paper-title {
+  font-weight: bold;
+  color: #0056b3;
+  margin-bottom: 5px;
+}
+
+.similarity-score {
+  color: green;
+  font-weight: bold;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #777;
+}
+
+#instructions {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+#instructions h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+#instructions ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+#instructions a {
+  color: #007bff;
+}
+
+#notice {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  color: #856404;
+}
+
+.dropdown-container, 
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.dropdown-container label, 
+.input-container label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.dropdown-container select, 
+.input-container input {
+  margin-right: 20px;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.input-container button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.input-container button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .similar-paper {
+      width: 95%;
+  }
+
+  .similar-paper-title {
+      font-size: 16px;
+  }
+
+  .similarity-score {
+      font-size: 14px;
+  }
+
+  .abstract {
+      font-size: 13px;
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+      width: 0%;
+  }
+  50% {
+      width: 100%;
+  }
+  100% {
+      width: 0%;
+  }
+}
+
+#loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loadingBox {
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.loadingText {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.progressBarContainer {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+#progressBar {
+  width: 0%;
+  height: 100%;
+  background-color: #76c7c0;
+  transition: width 0.2s ease;
+}
+
+.progressPercentage {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.estimatedTime {
+  font-size: 14px;
+  color: #555;
+}
