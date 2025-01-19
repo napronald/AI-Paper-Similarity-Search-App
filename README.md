@@ -1,67 +1,52 @@
 # AI Paper Similarity Search
-AI Paper Similarity Search is a **client-side web application** that allows users to search for academic papers similar to their query. The application uses machine learning to rank papers based on their relevance and provides direct links to the papers.
+AI Paper Similarity Search allows users to search for academic papers similar to their query. The application uses machine learning to rank papers based on their relevance and provides direct links to the papers.
 
 **Live Demo**: [AI Paper Similarity Search App](https://napronald.github.io/AI-Paper-Similarity-Search-App/)
 
-**Note:** The app is optimized for smaller subsets to provide a seamless user experience without overwhelming the browser.
+**Note:** The web app loads small subsets of data to avoid overwhelming the browser. To demo the full model containing all [2 million embeddings](https://drive.google.com/drive/u/2/folders/1iuOpyaHjqTYuCuKdDz4uOY_fJPvN3GbT) you can follow the installation instructions below and run the `eval.py` script in the `training` folder.
 
-## Video Demo
+## Web App Video Demo
 https://github.com/user-attachments/assets/49507189-9110-426b-9adb-9773761f8727
 
-## Usage
-1. **Enter a Query:**
+## Full Model Demo
 
-    Input a keyword or phrase related to your area of interest (e.g., "computer vision") in the search box.
+https://github.com/user-attachments/assets/1e9c1328-0629-464b-b24e-b0743b8be02e
 
-2. **Select Embeddings Size:**
+## Installation
 
-    Choose the number of paper embeddings to load from the dropdown menu:
-    
-    - **10K Papers (Default):** Fast loading with a smaller dataset.
-    - **25K Papers (Medium):** Balanced option for performance and comprehensiveness.
-    - **50K Papers (Large):** More comprehensive search with more paper embeddings.
+First, ensure you have git and conda installed:
 
-3. **Choose Number of Results:**
+```sh
+# Step 1: Create and activate Conda environment
+conda create -n AIPSS python=3.8
+conda activate AIPSS
 
-    Select how many top similar papers you want to retrieve (5, 10, 25, 50).
+# Step 2: Clone the repository
+git clone https://github.com/napronald/AI-Paper-Similarity-Search-App.git
+cd AI-Paper-Similarity-Search-App/training
 
-4. **Find Similar Papers:**
-
-    Click the "Find Similar Papers" button to perform the search. The application will display the most relevant papers along with their similarity scores and links to arXiv.
-
-5. **View Abstracts:**
-
-    Click "Read More" to expand and read the full abstract of a paper.
-
-## Project Structure
-```plaintext
-AI-Paper-Similarity-Search-App/
-├── index.html
-├── styles/
-│   └── style.css
-├── scripts/
-│   ├── main.js
-│   ├── dataloader.js
-│   ├── similarity.js
-│   ├── tokenizer.js
-│   ├── progress.js
-├── libs/
-│   └── transformers.min.js 
-└── README.md
+# Step 3: Install dependencies
+pip install -r requirements.txt
 ```
-- **index.html**: Main entry point  
-- **styles/style.css**: Global styling  
-- **scripts/main.js:** Initializes the application and handles user interactions.
-- **scripts/dataloader.js:** Manages loading and storing paper embeddings using IndexedDB.
-- **scripts/similarity.js:** Performs similarity search and displays results.
-- **scripts/tokenizer.js:** Initializes the tokenizer and performs model inference.
-- **scripts/progress.js:** Manages the progress bar during data loading.
-- **libs/transformers.min.js:** External library for Transformers.js.
-- **README.md:** Project documentation.
 
-## Tech Stack
-- **HTML**, **CSS**, and **JavaScript**  
-- **ONNX Runtime:** For running the machine learning model directly in the browser.
-- **Transformers.js:** Tokenization and model inference.
-- **IndexedDB:** For storing and retrieving paper embeddings locally.
-- **arXiv Dataset:** Source of the academic papers.
+Then, you can either run `main.py` to generate the metadata yourself or download the precomputed data using:
+
+```sh
+# Step 3: Download metadata
+pip install gdown
+gdown --folder https://drive.google.com/drive/folders/1iuOpyaHjqTYuCuKdDz4uOY_fJPvN3GbT
+mv AI-Paper-Similarity-Search/* .
+rm -r AI-Paper-Similarity-Search
+```
+
+This will download all the files needed into the current directory to run `eval.py`.
+
+```sh
+# Step 4: Add cosmetic effects
+pip install textwrap3
+pip install colorama
+python eval.py
+```
+
+# Support
+If you found this project interesting and helpful, please consider giving it a star 🌟 to support its development. 
