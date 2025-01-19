@@ -1,0 +1,38 @@
+{
+    "test_queries": [
+      {
+        "query": "<query_string_1>",
+        "relevant_ids": [
+          "<paper_id_1>",
+          "<paper_id_2>",
+          "<paper_id_3>",
+          "...",
+          "<paper_id_n>"
+        ]
+      },
+      {
+        "query": "<query_string_2>",
+        "relevant_ids": [
+          "<paper_id_1>",
+          "<paper_id_2>",
+          "<paper_id_3>",
+          "...",
+          "<paper_id_n>"        
+        ]
+      },
+
+
+
+      
+      {
+        "query": "<query_string_n>",
+        "relevant_ids": [
+          "<paper_id_1>",
+          "<paper_id_2>",
+          "<paper_id_3>",
+          "...",
+          "<paper_id_n>"
+        ]
+      }
+    ]
+  }
